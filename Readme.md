@@ -1,10 +1,8 @@
-This project adds [CoffeeScript] support to the vim editor. It handles syntax,
+This project adds [UniScript] support to the vim editor. It handles syntax,
 indenting, compiling, and more. Also included is an [eco] syntax and support for
-CoffeeScript in Haml and HTML.
+UniScript in Haml and HTML.
 
-![Screenshot](http://i.imgur.com/eUBvm.png)
-
-[CoffeeScript]: http://jashkenas.github.com/coffee-script/
+[UniScript]: http://github.com/ingydotnet/uniscript
 [eco]: https://github.com/sstephenson/eco
 
 ### Install from a Zipball
@@ -17,12 +15,11 @@ This is the quickest way to get things running.
 
 2. Extract the archive into `~/.vim/`:
 
-        unzip -od ~/.vim vim-coffee-script-HASH.zip
+        unzip -od ~/.vim uniscript-vim-HASH.zip
 
 These steps are also used to update the plugin.
 
-[zipball-vim]: http://www.vim.org/scripts/script.php?script_id=3590
-[zipball-github]: https://github.com/kchmck/vim-coffee-script/downloads
+[zipball-github]: https://github.com/sevvie/uniscript-vim/downloads
 
 ### Install with Pathogen
 
@@ -51,7 +48,7 @@ directory and updates are just a `git pull` away.
 
 #### Updating
 
-1. Change into `~/.vim/bundle/vim-coffee-script/`:
+1. Change into `~/.vim/bundle/uniscript-vim/`:
 
         $ cd ~/.vim/bundle/vim-coffee-script
 
@@ -59,34 +56,34 @@ directory and updates are just a `git pull` away.
 
         $ git pull
 
-### CoffeeMake: Compile the Current File
+### I'M NOT SURE HOW TO HANDLE THIS SECTION YET.
 
-The `CoffeeMake` command compiles the current file and parses any errors:
+The `UniScriptMake` command compiles the current file and parses any errors:
 
-  ![CoffeeMake](http://i.imgur.com/cr9xI.png)
+  ![UniScriptMake](http://i.imgur.com/cr9xI.png)
 
 The full signature of the command is:
 
-    :[silent] CoffeeMake[!] [COFFEE-OPTIONS]...
+    :[silent] UniScriptMake[!] [COFFEE-OPTIONS]...
 
-By default, `CoffeeMake` shows all compiler output and jumps to the first line
+By default, `UniScriptMake` shows all compiler output and jumps to the first line
 reported as an error by `coffee`:
 
-    :CoffeeMake
+    :UniScriptMake
 
 Compiler output can be hidden with `silent`:
 
-    :silent CoffeeMake
+    :silent UniScriptMake
 
 Line-jumping can be turned off by adding a bang:
 
-    :CoffeeMake!
+    :UniScriptMake!
 
-Options given to `CoffeeMake` are passed along to `coffee`:
+Options given to `UniScriptMake` are passed along to `coffee`:
 
-    :CoffeeMake --bare
+    :UniScriptMake --bare
 
-`CoffeeMake` can be manually loaded for a file with:
+`UniScriptMake` can be manually loaded for a file with:
 
     :compiler coffee
 
@@ -95,12 +92,12 @@ Options given to `CoffeeMake` are passed along to `coffee`:
 To recompile a file when it's written, add an `autocmd` like this to your
 `vimrc`:
 
-    au BufWritePost *.coffee silent CoffeeMake!
+    au BufWritePost *.coffee silent UniScriptMake!
 
 All of the customizations above can be used, too. This one compiles silently
 and with the `-b` option, but shows any errors:
 
-    au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
+    au BufWritePost *.coffee silent UniScriptMake! -b | cwindow | redraw!
 
 The `redraw!` command is needed to fix a redrawing quirk in terminal vim, but
 can removed for gVim.
