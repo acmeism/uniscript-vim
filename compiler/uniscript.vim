@@ -1,42 +1,42 @@
-" Language:    CoffeeScript
+" Language:    UniScriptScript
 " Maintainer:  Mick Koch <kchmck@gmail.com>
-" URL:         http://github.com/kchmck/vim-coffee-script
+" URL:         http://github.com/kchmck/vim-uniscript-script
 " License:     WTFPL
 
 if exists('current_compiler')
   finish
 endif
 
-let current_compiler = 'coffee'
-" Pattern to check if coffee is the compiler
+let current_compiler = 'uniscript'
+" Pattern to check if uniscript is the compiler
 let s:pat = '^' . current_compiler
 
-" Path to CoffeeScript compiler
-if !exists('coffee_compiler')
-  let coffee_compiler = 'coffee'
+" Path to UniScriptScript compiler
+if !exists('uniscript_compiler')
+  let uniscript_compiler = 'uniscript'
 endif
 
-if exists('coffee_make_compiler')
+if exists('uniscript_make_compiler')
   echohl WarningMsg
-    echom '`coffee_make_compiler` is deprecated: use `coffee_compiler` instead'
+    echom '`uniscript_make_compiler` is deprecated: use `uniscript_compiler` instead'
   echohl None
 
-  let coffee_compiler = coffee_make_compiler
+  let uniscript_compiler = uniscript_make_compiler
 endif
 
-" Extra options passed to CoffeeMake
-if !exists('coffee_make_options')
-  let coffee_make_options = ''
+" Extra options passed to UniScriptMake
+if !exists('uniscript_make_options')
+  let uniscript_make_options = ''
 endif
 
 " Get a `makeprg` for the current filename. This is needed to support filenames
 " with spaces and quotes, but also not break generic `make`.
 function! s:GetMakePrg()
-  return g:coffee_compiler . ' -c ' . g:coffee_make_options . ' $* '
+  return g:uniscript_compiler . ' -c ' . g:uniscript_make_options . ' $* '
   \                        . fnameescape(expand('%'))
 endfunction
 
-" Set `makeprg` and return 1 if coffee is still the compiler, else return 0.
+" Set `makeprg` and return 1 if uniscript is still the compiler, else return 0.
 function! s:SetMakePrg()
   if &l:makeprg =~ s:pat
     let &l:makeprg = s:GetMakePrg()
@@ -50,7 +50,7 @@ function! s:SetMakePrg()
 endfunction
 
 " Set a dummy compiler so we can check whether to set locally or globally.
-CompilerSet makeprg=coffee
+CompilerSet makeprg=uniscript
 call s:SetMakePrg()
 
 CompilerSet errorformat=Error:\ In\ %f\\,\ %m\ on\ line\ %l,
@@ -59,17 +59,17 @@ CompilerSet errorformat=Error:\ In\ %f\\,\ %m\ on\ line\ %l,
                        \%-G%.%#
 
 " Compile the current file.
-command! -bang -bar -nargs=* CoffeeMake make<bang> <args>
+command! -bang -bar -nargs=* UniScriptMake make<bang> <args>
 
 " Set `makeprg` on rename since we embed the filename in the setting.
-augroup CoffeeUpdateMakePrg
+augroup UniScriptUpdateMakePrg
   autocmd!
 
-  " Update `makeprg` if coffee is still the compiler, else stop running this
+  " Update `makeprg` if uniscript is still the compiler, else stop running this
   " function.
   function! s:UpdateMakePrg()
     if !s:SetMakePrg()
-      autocmd! CoffeeUpdateMakePrg
+      autocmd! UniScriptUpdateMakePrg
     endif
   endfunction
 
