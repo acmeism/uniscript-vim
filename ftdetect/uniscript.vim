@@ -3,9 +3,10 @@
 " URL:         http://github.com/kchmck/vim-uniscript-script
 " License:     WTFPL
 
-autocmd BufNewFile,BufRead *.cd.uni set filetype=uniscript
-autocmd BufNewFile,BufRead *.cdent.uni set filetype=uniscript
-autocmd BufNewFile,BufRead *.cd1 set filetype=uniscript
+autocmd BufNewFile,BufRead *.uni set filetype=uniscript
+" autocmd BufNewFile,BufRead *.cd.uni set filetype=uniscript
+" autocmd BufNewFile,BufRead *.cdent.uni set filetype=uniscript
+" autocmd BufNewFile,BufRead *.cd1 set filetype=uniscript
 
 function! s:DetectUniScript()
     if getline(1) =~ '^#!?.*\<uniscript\>'

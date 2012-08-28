@@ -1,4 +1,4 @@
-" Language:    UniScriptScript
+" Language:    UniScript
 " Maintainer:  Mick Koch <kchmck@gmail.com>
 " URL:         http://github.com/kchmck/vim-uniscript-script
 " License:     WTFPL
@@ -13,6 +13,12 @@ setlocal formatoptions-=t formatoptions+=croql
 setlocal comments=:#
 setlocal commentstring=#\ %s
 setlocal omnifunc=javascriptcomplete#CompleteJS
+
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+" setlocal smarttab
+" setlocal expandtab
 
 " Enable UniScriptMake if it won't overwrite any settings.
 if !len(&l:makeprg)
